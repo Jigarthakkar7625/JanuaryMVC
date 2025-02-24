@@ -1,0 +1,163 @@
+﻿@model JanuaryMVC.Models.UserModel
+
+@{
+    ViewBag.Title = "Customer";
+}
+
+<h2>Customer</h2>
+
+User Id : @Model.UserId
+
+@{
+
+    var a = 10;
+    var c = a + 10;
+
+
+
+    //for (int i = 0; i < length; i++)
+    //{
+
+    //}
+
+}
+
+@*@Html.Partial("_MyPartialView", Model)
+
+@Html.Partial("_MyPartialView", Model)
+
+@Html.Partial("_MyPartialView", Model)
+
+@Html.Partial("_MyPartialView", Model)
+
+@Html.Partial("_MyPartialView", Model)
+
+@Html.Partial("_MyPartialView", Model)*@
+
+@{
+    Html.RenderPartial("_MyPartialView", Model);
+
+ }
+
+
+
+<form action="/Home/DownloadFile" method="get">
+    <button type="submit">REDIRECT</button>
+</form>
+
+Value of C = @c
+<br />
+<br />
+
+HTML = CS + HTML
+
+<br />
+<br />
+@ViewBag.MyName
+
+<br />
+
+@ViewBag.MyUserId
+
+<br />
+
+@ViewBag.IsActive
+
+<br />
+<br />
+<br />
+
+@if (ViewData["Employee"] != null)
+{
+
+    foreach (var item in ViewData["Employee"] as List<JanuaryMVC.Models.EmployeeModel>)
+    {
+        <div>
+            @item.EmployeeId
+        </div>
+
+
+        if (item.EmployeeName != "MyName1")
+        {
+            <div>
+                @item.EmployeeName
+            </div>
+        }
+
+
+
+        <br />
+    }
+
+}
+
+<br />
+<br />
+
+@if (ViewBag.EmployeesList != null)
+{
+
+    foreach (var item in ViewBag.EmployeesList)
+    {
+        <div>
+            @item.EmployeeId
+        </div>
+
+
+        if (item.EmployeeName != "MyName1")
+        {
+            <div>
+                @item.EmployeeName
+            </div>
+        }
+
+
+
+        <br />
+    }
+
+}
+
+
+
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+<script type="text/javascript">
+    debugger
+
+    fetch('/Home/GetData') // controller/method
+        .then(response => response.json()) // Convert response to JSON
+        .then(data => {
+            debugger
+            console.log(data);
+        })   // Log the data
+        .catch(error => console.error('Error:', error));
+
+</script>
