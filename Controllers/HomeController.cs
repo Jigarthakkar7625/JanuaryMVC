@@ -9,6 +9,11 @@ namespace JanuaryMVC.Controllers
 {
     public class HomeController : Controller
     {
+
+        //Viewbag >> C > V
+        //ViewDaTA >>  C > V
+        //TempData >> C > C
+
         // Return type ??
         // View result return View();
         // PartialView() // 
@@ -18,6 +23,9 @@ namespace JanuaryMVC.Controllers
         // RedirectToRouteResult()
         // File Result()
         // Empty Result()
+
+
+        //
 
 
 
@@ -96,8 +104,11 @@ namespace JanuaryMVC.Controllers
         [HttpPost]
         public ActionResult Customer(FormCollection frm)
         {
+
+            TempData["MyData"] = "Jigar";
+
             UserModel userModel = new UserModel();
-            return RedirectToAction("About", "Home");
+            return RedirectToAction("Index", "User");
 
         }
 

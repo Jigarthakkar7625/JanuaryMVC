@@ -1,0 +1,61 @@
+﻿@model JanuaryMVC.Models.Register
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Save", "Register", FormMethod.Post, new { @class = "", @id = "frmUser" }))
+{
+
+    @Html.TextBoxFor(model => model.UserName, new { @class = "myClass", @id = "UserClass" })
+
+    <br />
+
+    @Html.TextBoxFor(model => model.Email, new { @class = "myClass", @id = "UserClass" })
+
+
+    <br />
+
+    @Html.ActionLink("Goto THis Page", "Index", "Home")
+
+    @*@Html.Action("","")*@
+    <br />
+
+    @Html.DropDownListFor(x => x.UserId, new SelectList(ViewBag.UserList, "UserId", "UserName"))
+
+
+    <br />
+
+    @Html.CheckBoxFor(x => x.IsActive)
+
+    @Html.CheckBoxFor(x => x.IsActive)
+
+    <br />
+
+    <label>MAle</label>
+    @Html.RadioButtonFor(x => x.Gender, "MALE")
+
+    <label>FEMALE</label>
+    @Html.RadioButtonFor(x => x.Gender, "FEMALE")
+    <label>T</label>
+    @Html.RadioButtonFor(x => x.Gender, "T")
+
+
+    @Html.PasswordFor(x => x.Password)
+
+
+
+    <br />
+    <input id="Gender" name="Gender" type="radio">
+    <input id="Gender" name="Gender" type="radio">
+
+    <br />
+
+    <br />
+    <button type="submit"> Save</button>
+}
+
+
+

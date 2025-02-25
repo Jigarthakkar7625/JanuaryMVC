@@ -24,24 +24,25 @@ User Id : @Model.UserId
 
 @*@Html.Partial("_MyPartialView", Model)
 
-@Html.Partial("_MyPartialView", Model)
+    @Html.Partial("_MyPartialView", Model)
 
-@Html.Partial("_MyPartialView", Model)
+    @Html.Partial("_MyPartialView", Model)
 
-@Html.Partial("_MyPartialView", Model)
+    @Html.Partial("_MyPartialView", Model)
 
-@Html.Partial("_MyPartialView", Model)
+    @Html.Partial("_MyPartialView", Model)
 
-@Html.Partial("_MyPartialView", Model)*@
-
-@{
-    Html.RenderPartial("_MyPartialView", Model);
-
- }
+    @Html.Partial("_MyPartialView", Model)*@
 
 
 
-<form action="/Home/DownloadFile" method="get">
+@*@{ 
+    Html.RenderAction("MyPartialView", "Home");
+
+}*@
+
+
+<form action="/Home/Customer" method="post">
     <button type="submit">REDIRECT</button>
 </form>
 

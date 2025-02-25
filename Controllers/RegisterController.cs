@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JanuaryMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,42 +7,54 @@ using System.Web.Mvc;
 
 namespace JanuaryMVC.Controllers
 {
-    public class UserController : Controller
+    public class RegisterController : Controller
     {
-        // GET: User
+        // GET: Register
         public ActionResult Index()
         {
+            Register register = new Register();
+            register.UserName = "Jigar";
 
-            if (TempData.ContainsKey("MyData"))
+            List<UserModel> userModel = new List<UserModel>
             {
-                var getData = TempData["MyData"];
-            }
+                new UserModel(){UserId = 1, UserName = "Jigar" },
+                new UserModel(){UserId = 2, UserName = "Jigar1" },
+                new UserModel(){UserId = 3, UserName = "Jigar2" }
+            };
 
-            TempData.Keep();
 
-            return View();
+            ViewBag.UserList = userModel;
+
+            return View(register);
         }
 
-        // GET: User/Details/5
+        [HttpPost]
+        public ActionResult Save(Register register)
+        {
+            //Register register = new Register();
+            //register.UserName = "Jigar";
+
+            // Save
+
+          
+
+            register = new Register();
+            return RedirectToAction("Index", "Register");
+        }
+
+        // GET: Register/Details/5
         public ActionResult Details(int id)
         {
-           
             return View();
         }
 
-        // GET: User/Create
+        // GET: Register/Create
         public ActionResult Create()
         {
-            if (TempData.ContainsKey("MyData"))
-            {
-                var getData = TempData["MyData"];
-            }
-
-
             return View();
         }
 
-        // POST: User/Create
+        // POST: Register/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -57,13 +70,13 @@ namespace JanuaryMVC.Controllers
             }
         }
 
-        // GET: User/Edit/5
+        // GET: Register/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: User/Edit/5
+        // POST: Register/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -79,13 +92,13 @@ namespace JanuaryMVC.Controllers
             }
         }
 
-        // GET: User/Delete/5
+        // GET: Register/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: User/Delete/5
+        // POST: Register/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
