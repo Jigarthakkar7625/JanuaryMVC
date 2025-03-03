@@ -9,9 +9,15 @@ namespace JanuaryMVC.Controllers
 {
     public class RegisterController : Controller
     {
+
         // GET: Register
         public ActionResult Index()
         {
+
+            DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
+            var getCustomerList = dB_January_BatchEntities.Customers.ToList();
+
+
             Register register = new Register();
             register.UserName = "Jigar";
 
@@ -23,7 +29,7 @@ namespace JanuaryMVC.Controllers
             };
 
 
-            ViewBag.UserList = userModel;
+            ViewBag.UserList = getCustomerList;
 
             return View(register);
         }
@@ -31,12 +37,14 @@ namespace JanuaryMVC.Controllers
         [HttpPost]
         public ActionResult Save(Register register)
         {
+
+
             //Register register = new Register();
             //register.UserName = "Jigar";
 
             // Save
 
-          
+
 
             register = new Register();
             return RedirectToAction("Index", "Register");
