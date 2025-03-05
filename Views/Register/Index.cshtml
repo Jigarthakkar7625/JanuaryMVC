@@ -11,6 +11,55 @@
 }
 
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            int i = 0;
+        }
+
+        @foreach (var item in ViewBag.UserList)
+        {
+
+            <tr>
+                <td>@i</td>
+                <td>@item.CustomerID</td>
+                <td>@item.Name</td>
+                <td>
+
+                    <a href="@Url.Action("Details", "Register", new { id = item.CustomerID })">Edit</a>
+
+
+                    
+                    @*@Html.ActionLink("Edit", "Details", "Register", new { id = @item.CustomerID })*@
+
+                </td>
+            </tr>
+
+            {
+                i++;
+            }
+        }
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
 
 <h2>Register</h2>
 

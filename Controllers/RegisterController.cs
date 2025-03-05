@@ -38,6 +38,38 @@ namespace JanuaryMVC.Controllers
         public ActionResult Save(Register register)
         {
 
+            DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
+
+            var customerId = 9;
+
+            //var getCustomer = dB_January_BatchEntities.Customers.Where(x => x.CustomerID == customerId).FirstOrDefault();
+
+            //getCustomer.City = "Canada";
+            //getCustomer.Age = "50";
+            //getCustomer.Name = "Palak";
+
+            //dB_January_BatchEntities.SaveChanges();
+
+            var getCustomerForDelete = dB_January_BatchEntities.Customers.Where(x => x.CustomerID == customerId).FirstOrDefault();
+
+            dB_January_BatchEntities.Customers.Remove(getCustomerForDelete);
+
+            dB_January_BatchEntities.SaveChanges();
+
+
+
+            //Customer customer = new Customer();
+            //customer.CustomerID = 9;
+            //customer.Name = "Hello Brother";
+            //customer.City = "Ahmedabad";
+            //customer.Age = "18";
+            //dB_January_BatchEntities.Customers.Add(customer); //Insert
+
+            //dB_January_BatchEntities.SaveChanges(); // Database ma save thase 
+
+
+            //var getCustomerList = dB_January_BatchEntities.Customers.ToList();
+
 
             //Register register = new Register();
             //register.UserName = "Jigar";
@@ -53,6 +85,7 @@ namespace JanuaryMVC.Controllers
         // GET: Register/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.Id = id;
             return View();
         }
 

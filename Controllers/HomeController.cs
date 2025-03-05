@@ -39,7 +39,9 @@ namespace JanuaryMVC.Controllers
 
         public ActionResult Index()
         {
-
+            //CRUD:
+            //Create
+            //    READ, Update, Delete
             return View();
             // return Redirect("https://www.amazon.in/");
         }

@@ -251,6 +251,7 @@
     <Content Include="Views\Shared\_MyPartialView.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Register\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
