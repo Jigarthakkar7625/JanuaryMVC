@@ -39,6 +39,12 @@ namespace JanuaryMVC.Controllers
 
         public ActionResult Index()
         {
+            if (Session["userid"] != null)
+            {
+                var getSeessionData = Session["userid"].ToString();
+            }
+            
+
             //CRUD:
             //Create
             //    READ, Update, Delete

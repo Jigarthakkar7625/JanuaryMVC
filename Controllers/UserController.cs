@@ -12,6 +12,8 @@ namespace JanuaryMVC.Controllers
         public ActionResult Index()
         {
 
+            var getSeessionData = Session["userid"].ToString();
+
             if (TempData.ContainsKey("MyData"))
             {
                 var getData = TempData["MyData"];

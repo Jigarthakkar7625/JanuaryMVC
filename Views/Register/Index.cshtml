@@ -11,6 +11,11 @@
 }
 
 
+
+
+
+@*@Html.HiddenFor(x => x.UserName)*@
+
 <table class="table">
     <thead>
         <tr>
@@ -38,7 +43,7 @@
                     <a href="@Url.Action("Details", "Register", new { id = item.CustomerID })">Edit</a>
 
 
-                    
+
                     @*@Html.ActionLink("Edit", "Details", "Register", new { id = @item.CustomerID })*@
 
                 </td>

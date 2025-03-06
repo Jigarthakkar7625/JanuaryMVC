@@ -11,8 +11,20 @@ namespace JanuaryMVC.Controllers
     {
 
         // GET: Register
+
+        // Login >> Useerid >> Store >> Session
+
         public ActionResult Index()
         {
+            HttpCookie httpCookie = new HttpCookie("UserId", "fhsfjksdhfksdhfjkfhjkhsf");
+            httpCookie.Expires = DateTime.Now.AddDays(10);
+            Response.Cookies.Add(httpCookie);
+
+
+            //Client : 
+            // Server
+            Session["userid"] = 10;
+
 
             DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
             var getCustomerList = dB_January_BatchEntities.Customers.ToList();
@@ -38,7 +50,21 @@ namespace JanuaryMVC.Controllers
         public ActionResult Save(Register register)
         {
 
+            var getCoo = Request.Cookies["UserId"]?.Value;
+            //50
+            //    4mb
             DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
+            var getCheckUser = dB_January_BatchEntities.Customers.Where(x => x.username == register.email && x.password == register.Password).firstorDefault();
+
+
+            if (getCheckUser != null) {
+                Session["userid"] = getCheckUser.USerId;
+                Session["emailid"] = getCheckUser.emailid;
+            }
+
+            var getSeessionData = Session["userid"].ToString();
+
+            
 
             var customerId = 9;
 
@@ -77,9 +103,10 @@ namespace JanuaryMVC.Controllers
             // Save
 
 
+            //domain?id=12&name=fsdsf
 
             register = new Register();
-            return RedirectToAction("Index", "Register");
+            return RedirectToAction("Create", "Register", new { myData = "123", name="dsdfs" });
         }
 
         // GET: Register/Details/5
@@ -92,6 +119,8 @@ namespace JanuaryMVC.Controllers
         // GET: Register/Create
         public ActionResult Create()
         {
+            var getNameFromQS = Request.QueryString["name"];
+            var getNameFromQS1 = Request.QueryString["myData"];
             return View();
         }
 
