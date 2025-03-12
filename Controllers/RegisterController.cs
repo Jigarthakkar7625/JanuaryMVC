@@ -54,13 +54,13 @@ namespace JanuaryMVC.Controllers
             //50
             //    4mb
             DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
-            var getCheckUser = dB_January_BatchEntities.Customers.Where(x => x.username == register.email && x.password == register.Password).firstorDefault();
+            //var getCheckUser = dB_January_BatchEntities.Customers.Where(x => x.username == register.email && x.password == register.Password).firstorDefault();
+            Session["userid"] = 10;
 
-
-            if (getCheckUser != null) {
-                Session["userid"] = getCheckUser.USerId;
-                Session["emailid"] = getCheckUser.emailid;
-            }
+            //if (getCheckUser != null) {
+            //    Session["userid"] = getCheckUser.USerId;
+            //    Session["emailid"] = getCheckUser.emailid;
+            //}
 
             var getSeessionData = Session["userid"].ToString();
 

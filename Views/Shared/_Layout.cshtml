@@ -22,6 +22,10 @@
                     <div>
                         Welcome to  @Session["userid"]
                     </div>
+
+                    <div>
+                        @Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
                 }
 
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
