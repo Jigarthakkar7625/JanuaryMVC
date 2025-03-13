@@ -62,17 +62,64 @@ namespace JanuaryMVC.Controllers
 
         public ActionResult Index()
         {
+            var a = Enumerable.Range(1, 10);
+
             DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
 
 
+            // Directly Database ma filter marse
+            IEnumerable<EmpAddress> empAddresses1 = dB_January_BatchEntities.EmpAddresses.ToList().Where(x => x.EmployeeAddressID > 2);
 
-            var result = (from empIndia in dB_January_BatchEntities.EmployeeIndias
-                          join empAdd in dB_January_BatchEntities.EmpAddresses on empIndia.ID equals empAdd.EmployeeID
-                          select new
-                          {
-                              Name = empIndia.Name,
-                              Address = empAdd.Address
-                          }).ToList();
+
+            foreach (var item in empAddresses1)
+            {
+                Console.WriteLine(item);
+
+            }
+
+
+            // Directly Database ma filter marse
+            IQueryable<EmpAddress> empAddresses = dB_January_BatchEntities.EmpAddresses.Where(x => x.EmployeeAddressID > 2);
+
+
+            foreach (var item in empAddresses)
+            {
+                Console.WriteLine(item);
+
+            }
+
+
+            // Take
+
+            //var a = dB_January_BatchEntities.EmpAddresses.Take(5).ToList();
+
+            //var b = dB_January_BatchEntities.EmpAddresses.Take(5).ToList();
+
+            //var take5 = dB_January_BatchEntities.EmpAddresses.AsEnumerable().Take(5).TakeWhile(x => x.EmployeeID < 5).ToList();
+
+
+
+
+            //var b1 = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).Skip(5).ToList();
+
+            //var take56 = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).AsEnumerable().Skip(5).SkipWhile(x => x.EmployeeID < 5).ToList();
+
+
+            // Pagination:
+
+            //int pagenumber = 2; // Dynamic
+            //int pageSize = 5;
+
+            //var paginationData = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).Skip((pagenumber - 1) * pageSize).Take(pageSize).ToList();
+
+
+            //var result = (from empIndia in dB_January_BatchEntities.EmployeeIndias
+            //              join empAdd in dB_January_BatchEntities.EmpAddresses on empIndia.ID equals empAdd.EmployeeID
+            //              select new
+            //              {
+            //                  Name = empIndia.Name,
+            //                  Address = empAdd.Address
+            //              }).ToList();
 
 
 
