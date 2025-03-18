@@ -134,8 +134,14 @@
     <Compile Include="AuditTable.cs">
       <DependentUpon>MyEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Auth\ActionFilterAttr.cs" />
+    <Compile Include="Auth\AuthorizationAttr.cs" />
+    <Compile Include="Auth\ExceptionAtte.cs" />
+    <Compile Include="Auth\IAuthenticationAtttr.cs" />
+    <Compile Include="Controllers\AccessDeniedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Auth\ResultFilterAttr.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>MyEntity.tt</DependentUpon>
@@ -253,6 +259,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Register\Details.cshtml" />
     <Content Include="Views\Register\Create.cshtml" />
+    <Content Include="Views\AccessDenied\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

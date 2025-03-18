@@ -1,4 +1,5 @@
-﻿using JanuaryMVC.Models;
+﻿using JanuaryMVC.Auth;
+using JanuaryMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace JanuaryMVC.Controllers
         public string Key { get; set; }
         public int Total { get; set; }
     }
+
 
     public class HomeController : Controller
     {
@@ -59,87 +61,95 @@ namespace JanuaryMVC.Controllers
         }
 
 
-
+        //[AuthenticationAtttr]
+        //[AuthorizationAttr(roles: "Admin,User")]
+        //[ActionFilterAttr]
+        //[ExceptionAtte]
+        [ResultFilterAttr]
         public ActionResult Index()
         {
-            var a = Enumerable.Range(1, 10);
+            //var a = 0;
+            //var b = 10;
+            //var result = b / a;
 
-            DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
+            //var a = Enumerable.Range(1, 10);
 
-
-            // Directly Database ma filter marse
-            IEnumerable<EmpAddress> empAddresses1 = dB_January_BatchEntities.EmpAddresses.ToList().Where(x => x.EmployeeAddressID > 2);
-
-
-            foreach (var item in empAddresses1)
-            {
-                Console.WriteLine(item);
-
-            }
+            //DB_January_BatchEntities dB_January_BatchEntities = new DB_January_BatchEntities();
 
 
-            // Directly Database ma filter marse
-            IQueryable<EmpAddress> empAddresses = dB_January_BatchEntities.EmpAddresses.Where(x => x.EmployeeAddressID > 2);
+            //// Directly Database ma filter marse
+            //IEnumerable<EmpAddress> empAddresses1 = dB_January_BatchEntities.EmpAddresses.ToList().Where(x => x.EmployeeAddressID > 2);
 
 
-            foreach (var item in empAddresses)
-            {
-                Console.WriteLine(item);
+            //foreach (var item in empAddresses1)
+            //{
+            //    Console.WriteLine(item);
 
-            }
-
-
-            // Take
-
-            //var a = dB_January_BatchEntities.EmpAddresses.Take(5).ToList();
-
-            //var b = dB_January_BatchEntities.EmpAddresses.Take(5).ToList();
-
-            //var take5 = dB_January_BatchEntities.EmpAddresses.AsEnumerable().Take(5).TakeWhile(x => x.EmployeeID < 5).ToList();
+            //}
 
 
+            //// Directly Database ma filter marse
+            //IQueryable<EmpAddress> empAddresses = dB_January_BatchEntities.EmpAddresses.Where(x => x.EmployeeAddressID > 2);
 
 
-            //var b1 = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).Skip(5).ToList();
+            //foreach (var item in empAddresses)
+            //{
+            //    Console.WriteLine(item);
 
-            //var take56 = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).AsEnumerable().Skip(5).SkipWhile(x => x.EmployeeID < 5).ToList();
-
-
-            // Pagination:
-
-            //int pagenumber = 2; // Dynamic
-            //int pageSize = 5;
-
-            //var paginationData = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).Skip((pagenumber - 1) * pageSize).Take(pageSize).ToList();
+            //}
 
 
-            //var result = (from empIndia in dB_January_BatchEntities.EmployeeIndias
-            //              join empAdd in dB_January_BatchEntities.EmpAddresses on empIndia.ID equals empAdd.EmployeeID
-            //              select new
-            //              {
-            //                  Name = empIndia.Name,
-            //                  Address = empAdd.Address
-            //              }).ToList();
+            //// Take
+
+            ////var a = dB_January_BatchEntities.EmpAddresses.Take(5).ToList();
+
+            ////var b = dB_January_BatchEntities.EmpAddresses.Take(5).ToList();
+
+            ////var take5 = dB_January_BatchEntities.EmpAddresses.AsEnumerable().Take(5).TakeWhile(x => x.EmployeeID < 5).ToList();
 
 
 
 
+            ////var b1 = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).Skip(5).ToList();
 
-            var stringList12111 = new List<string> { "Arti", "df" }; // Object
-
-            var abc = stringList12111.Where(x => x == "ffds").DefaultIfEmpty();
-
-
-            var stringList1 = new List<string> { "Arti", "df" }; // Object
-
-            var stringListsdsd2 = new List<string>(); // Object
-
-            string index1 = stringList1.SingleOrDefault(); // 1 record return
+            ////var take56 = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).AsEnumerable().Skip(5).SkipWhile(x => x.EmployeeID < 5).ToList();
 
 
-            string index = stringList1.Single(); // 1 record return 
+            //// Pagination:
 
-            string indexsd = stringListsdsd2.Single();
+            ////int pagenumber = 2; // Dynamic
+            ////int pageSize = 5;
+
+            ////var paginationData = dB_January_BatchEntities.EmpAddresses.OrderBy(x => x.Address).Skip((pagenumber - 1) * pageSize).Take(pageSize).ToList();
+
+
+            ////var result = (from empIndia in dB_January_BatchEntities.EmployeeIndias
+            ////              join empAdd in dB_January_BatchEntities.EmpAddresses on empIndia.ID equals empAdd.EmployeeID
+            ////              select new
+            ////              {
+            ////                  Name = empIndia.Name,
+            ////                  Address = empAdd.Address
+            ////              }).ToList();
+
+
+
+
+
+            //var stringList12111 = new List<string> { "Arti", "df" }; // Object
+
+            //var abc = stringList12111.Where(x => x == "ffds").DefaultIfEmpty();
+
+
+            //var stringList1 = new List<string> { "Arti", "df" }; // Object
+
+            //var stringListsdsd2 = new List<string>(); // Object
+
+            //string index1 = stringList1.SingleOrDefault(); // 1 record return
+
+
+            //string index = stringList1.Single(); // 1 record return 
+
+            //string indexsd = stringListsdsd2.Single();
 
 
             //string index = stringList1.Last(); // 1 record return 
@@ -160,17 +170,17 @@ namespace JanuaryMVC.Controllers
 
             // LINQ : Language Integrrated Query
 
-            var any = dB_January_BatchEntities.Products.Any(x => x.Price > 1500);
+            //var any = dB_January_BatchEntities.Products.Any(x => x.Price > 1500);
 
-            var all = dB_January_BatchEntities.Products.All(x => x.Price > 50);
+            //var all = dB_January_BatchEntities.Products.All(x => x.Price > 50);
 
 
-            var groupby = dB_January_BatchEntities.Products.GroupBy(x => x.ProductName).Select(x => new groupBy
-            {
-                Key = x.Key,
-                Total = (int)x.Sum(y => y.Price)
+            //var groupby = dB_January_BatchEntities.Products.GroupBy(x => x.ProductName).Select(x => new groupBy
+            //{
+            //    Key = x.Key,
+            //    Total = (int)x.Sum(y => y.Price)
 
-            }).ToList();
+            //}).ToList();
 
             //foreach (var item in groupby)
             //{
@@ -181,93 +191,93 @@ namespace JanuaryMVC.Controllers
 
 
 
-            var contain = stringList1.Contains("Arti");
+            //var contain = stringList1.Contains("Arti");
 
 
-            var sum = dB_January_BatchEntities.Products.Max(x => x.Price);
+            //var sum = dB_January_BatchEntities.Products.Max(x => x.Price);
 
-            var count = dB_January_BatchEntities.Products.Count();
+            //var count = dB_January_BatchEntities.Products.Count();
 
-            if (count > 0)
-            {
-
-            }
-
-            //Except
-            var intList1 = new List<int> { 1, 2, 3, 4, 5, 6 }; // Object
-            var intList2 = new List<int> { 1, 3, 5, 8, 9, 10 }; // Object
-
-
-
-            var stringList2 = new List<string> { "Reena", "Arti" }; // Object
-
-            //var gexcept1234 = stringList1.Except(stringList2, StringComparer.OrdinalIgnoreCase).ToList();
-
-            //var gexcept12345 = stringList1.Intersect(stringList2, StringComparer.OrdinalIgnoreCase).ToList();
-
-            //var gexcept123455 = stringList1.Union(stringList2).ToList(); // 
-
-            //var gexcept1234555 = stringList1.Concat(stringList2).ToList(); // 
-
-            //var gexcept1234555 = stringList1.OrderBy(x => x).ToList(); // 
-            stringList1.Reverse();
-
-            //List<int> intListnull = new List<int>();
-
-            //List<int> intListnull = new List<int>();
-
-
-
-
-
-
-            var gexcept = intList1.Except(intList2).ToList();
-            var gexcept123 = intList2.Except(intList1).ToList();
-
-
-
-
-
-            //var getCustomerList = dB_January_BatchEntities.Customers.ToList();
-            //// Select * from [dbo].[Customers]
-
-            ////Query Syntex
-            //var getQCustomerName = (from emp in dB_January_BatchEntities.Customers
-            //                        select new Customer()
-            //                        {
-            //                            Name = emp.Name,
-            //                            Age = emp.Age
-            //                        }).ToList();
-
-            //// Method Syntex
-            //var getCustomerName = dB_January_BatchEntities.Customers.
-            //    Select(x => new Customer()
-            //    {
-            //        Name = x.Name + "Jigar fd j",
-            //        Age = x.Age
-            //    }).ToList();
-
-            //IEnumerable<char> abc = dB_January_BatchEntities.Customers.SelectMany(x => x.Name);
-
-            //foreach (var item in abc)
+            //if (count > 0)
             //{
-            //    Console.WriteLine(item);
+
             //}
 
-
-            var getQCustomerName = from emp in dB_January_BatchEntities.Customers where emp.CustomerID > 5 select emp;
-
-            var getCustomerName = dB_January_BatchEntities.Customers.Where(x => Check(x.CustomerID)).ToList();
-
-            var getCustomerName1 = dB_January_BatchEntities.Customers.Select(x => x.City).Distinct().ToList();
-
-            var getCustomerName112 = dB_January_BatchEntities.Customers.OrderBy(x => x.Name).ToList();
-
-            var getCustomerName1122 = dB_January_BatchEntities.Customers.OrderByDescending(x => x.Name).ThenByDescending(x => x.City).ToList();
+            ////Except
+            //var intList1 = new List<int> { 1, 2, 3, 4, 5, 6 }; // Object
+            //var intList2 = new List<int> { 1, 3, 5, 8, 9, 10 }; // Object
 
 
-            var intList = new List<int> { 1, 3, 5, 8, 7, 8, 9, 5, 6 }; // Object
-            var dis = intList.Distinct();
+
+            //var stringList2 = new List<string> { "Reena", "Arti" }; // Object
+
+            ////var gexcept1234 = stringList1.Except(stringList2, StringComparer.OrdinalIgnoreCase).ToList();
+
+            ////var gexcept12345 = stringList1.Intersect(stringList2, StringComparer.OrdinalIgnoreCase).ToList();
+
+            ////var gexcept123455 = stringList1.Union(stringList2).ToList(); // 
+
+            ////var gexcept1234555 = stringList1.Concat(stringList2).ToList(); // 
+
+            ////var gexcept1234555 = stringList1.OrderBy(x => x).ToList(); // 
+            //stringList1.Reverse();
+
+            ////List<int> intListnull = new List<int>();
+
+            ////List<int> intListnull = new List<int>();
+
+
+
+
+
+
+            //var gexcept = intList1.Except(intList2).ToList();
+            //var gexcept123 = intList2.Except(intList1).ToList();
+
+
+
+
+
+            ////var getCustomerList = dB_January_BatchEntities.Customers.ToList();
+            ////// Select * from [dbo].[Customers]
+
+            //////Query Syntex
+            ////var getQCustomerName = (from emp in dB_January_BatchEntities.Customers
+            ////                        select new Customer()
+            ////                        {
+            ////                            Name = emp.Name,
+            ////                            Age = emp.Age
+            ////                        }).ToList();
+
+            ////// Method Syntex
+            ////var getCustomerName = dB_January_BatchEntities.Customers.
+            ////    Select(x => new Customer()
+            ////    {
+            ////        Name = x.Name + "Jigar fd j",
+            ////        Age = x.Age
+            ////    }).ToList();
+
+            ////IEnumerable<char> abc = dB_January_BatchEntities.Customers.SelectMany(x => x.Name);
+
+            ////foreach (var item in abc)
+            ////{
+            ////    Console.WriteLine(item);
+            ////}
+
+
+            //var getQCustomerName = from emp in dB_January_BatchEntities.Customers where emp.CustomerID > 5 select emp;
+
+            //var getCustomerName = dB_January_BatchEntities.Customers.Where(x => Check(x.CustomerID)).ToList();
+
+            //var getCustomerName1 = dB_January_BatchEntities.Customers.Select(x => x.City).Distinct().ToList();
+
+            //var getCustomerName112 = dB_January_BatchEntities.Customers.OrderBy(x => x.Name).ToList();
+
+            //var getCustomerName1122 = dB_January_BatchEntities.Customers.OrderByDescending(x => x.Name).ThenByDescending(x => x.City).ToList();
+
+
+            //var intList = new List<int> { 1, 3, 5, 8, 7, 8, 9, 5, 6 }; // Object
+            //var dis = intList.Distinct();
 
 
 
@@ -311,7 +321,7 @@ namespace JanuaryMVC.Controllers
                 var getSeessionData = Session["userid"].ToString();
             }
 
-
+            ViewBag.Name = "Jigar";
             //CRUD:
             //Create
             //    READ, Update, Delete
@@ -398,6 +408,11 @@ namespace JanuaryMVC.Controllers
 
         public ActionResult About()
         {
+            // USer name and password >> Dataabse > Roles
+            Session["Roles"] = "Admin"; //This is comes from Database
+            Session["UserId"] = 10;
+
+
             ViewBag.Message = "Your application description page.";
 
             return View();
